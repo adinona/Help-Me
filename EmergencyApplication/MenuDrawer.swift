@@ -2,14 +2,14 @@
 //  MenuDrawer.swift
 //  EmergencyApplication
 //
-//  Created by Aditya Tanna on 4/15/16.
-//  Copyright © 2016 Aditya  Bhandari. All rights reserved.
+//  Created by Aditya Bhandari on 4/15/16.
+//  Copyright © 2016 Aditya Bhandari. All rights reserved.
 //
 
 import UIKit
 
 protocol MenuDrawerDelegate {
-    func selectIndexInMenu(index : Int32)
+    func selectIndexInMenu(_ index : Int32)
 }
 
 class MenuDrawer: UIView ,UITableViewDataSource,UITableViewDelegate{
@@ -25,26 +25,24 @@ class MenuDrawer: UIView ,UITableViewDataSource,UITableViewDelegate{
     override func awakeFromNib() {
         
         self.addSlideMenuButton()
-        arrayMenuOptions.append(["title":"Home", "icon":"App_Icon_60pts@3x.png"])
-        arrayMenuOptions.append(["title":"Your Emergency Contacts", "icon":"App_Icon_60pts@3x.png"])
-        arrayMenuOptions.append(["title":"You're As An Emergency", "icon":"App_Icon_60pts@3x.png"])
-        arrayMenuOptions.append(["title":"Logout", "icon":"App_Icon_60pts@3x.png"])
+        //arrayMenuOptions.append(["title":"Home", "icon":"App_Icon_60pts@3x.png"])
+        arrayMenuOptions.append(["title":"Emergency Contacts", "icon":"ec"])
+        arrayMenuOptions.append(["title":"As Emergency Contact","icon":"my_contacts_backup_logo"])
+        arrayMenuOptions.append(["title":"Logout", "icon":"log out"])
         tblMenu.reloadData()
-        
-        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return arrayMenuOptions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cellMenu")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellMenu")!
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
         
         let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
         let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
@@ -55,7 +53,7 @@ class MenuDrawer: UIView ,UITableViewDataSource,UITableViewDelegate{
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.delegate?.selectIndexInMenu(Int32(indexPath.row))
         
@@ -63,61 +61,62 @@ class MenuDrawer: UIView ,UITableViewDataSource,UITableViewDelegate{
     
     //MARK: Adding Menu Button in navigation bar
     func addSlideMenuButton() -> UIBarButtonItem{
-        let btnShowMenu = UIButton(type: UIButtonType.System)
-        btnShowMenu.setImage(self.defaultMenuImage(), forState: UIControlState.Normal)
-        btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
+        let btnShowMenu = UIButton(type: UIButtonType.system)
+        btnShowMenu.setImage(self.defaultMenuImage(), for: UIControlState())
+        btnShowMenu.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnShowMenu.tag = 1010
-        btnShowMenu.addTarget(self, action: "onSlideMenuButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnShowMenu.addTarget(self, action: #selector(MenuDrawer.onSlideMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         
         return customBarItem
     }
     
-    func onSlideMenuButtonPressed(sender : UIButton){
+    func onSlideMenuButtonPressed(_ sender : UIButton){
         
+        self.isHidden = false
         if (sender.tag == 10)
         {
             sender.tag = 0;
             
             btnMenu = nil
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
                 var frameMenu : CGRect = self.frame
-                frameMenu.origin.x = -1 * UIScreen.mainScreen().bounds.size.width
+                frameMenu.origin.x = -1 * UIScreen.main.bounds.size.width
                 self.frame = frameMenu
 
                 }, completion: { (finished) -> Void in
             })
             return
         }
-        sender.enabled = false
+        sender.isEnabled = false
         sender.tag = 10
         btnMenu = sender
-        self.frame.origin.x = (-1) * UIScreen.mainScreen().bounds.size.width
-        self.frame.size.height = UIScreen.mainScreen().bounds.size.height
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        self.frame.origin.x = (-1) * UIScreen.main.bounds.size.width
+        self.frame.size.height = UIScreen.main.bounds.size.height
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
             
             self.frame.origin.x = 0
-             sender.enabled = true
+             sender.isEnabled = true
             },completion:nil)
     }
     
     func defaultMenuImage() -> UIImage {
         var defaultMenuImage = UIImage()
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 22), false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 22), false, 0.0)
         
-        UIColor.blackColor().setFill()
-        UIBezierPath(rect: CGRectMake(0, 3, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 10, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 17, 30, 1)).fill()
+        UIColor.black.setFill()
+        UIBezierPath(rect: CGRect(x: 0, y: 3, width: 30, height: 1)).fill()
+        UIBezierPath(rect: CGRect(x: 0, y: 10, width: 30, height: 1)).fill()
+        UIBezierPath(rect: CGRect(x: 0, y: 17, width: 30, height: 1)).fill()
         
-        UIColor.whiteColor().setFill()
-        UIBezierPath(rect: CGRectMake(0, 4, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 11,  30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 18, 30, 1)).fill()
+        UIColor.white.setFill()
+        UIBezierPath(rect: CGRect(x: 0, y: 4, width: 30, height: 1)).fill()
+        UIBezierPath(rect: CGRect(x: 0, y: 11,  width: 30, height: 1)).fill()
+        UIBezierPath(rect: CGRect(x: 0, y: 18, width: 30, height: 1)).fill()
         
-        defaultMenuImage = UIGraphicsGetImageFromCurrentImageContext()
+        defaultMenuImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
         

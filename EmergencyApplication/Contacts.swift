@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 
 class Contacts: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppDelegate.getAppDelegate().checkContactAuthorization()
+        
+        if(AppDelegate.getAppDelegate().isAccessGranted){
+            print("Access Granted")
+        }else{
+            print("Access Denied")
+        }
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +29,5 @@ class Contacts: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

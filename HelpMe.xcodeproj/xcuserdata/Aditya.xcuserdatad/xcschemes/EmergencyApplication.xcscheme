@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48EC6F371C44A73D00A88818"
-               BuildableName = "Help Me!.app"
-               BlueprintName = "Help Me!"
-               ReferencedContainer = "container:Help Me!.xcodeproj">
+               BuildableName = "HelpMe.app"
+               BlueprintName = "HelpMe"
+               ReferencedContainer = "container:HelpMe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48EC6F4B1C44A73D00A88818"
-               BuildableName = "Help Me!.xctest"
-               BlueprintName = "Help Me!Tests"
-               ReferencedContainer = "container:Help Me!.xcodeproj">
+               BuildableName = "HelpMe.xctest"
+               BlueprintName = "HelpMeTests"
+               ReferencedContainer = "container:HelpMe.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48EC6F371C44A73D00A88818"
-            BuildableName = "Help Me!.app"
-            BlueprintName = "Help Me!"
-            ReferencedContainer = "container:Help Me!.xcodeproj">
+            BuildableName = "HelpMe.app"
+            BlueprintName = "HelpMe"
+            ReferencedContainer = "container:HelpMe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48EC6F371C44A73D00A88818"
-            BuildableName = "Help Me!.app"
-            BlueprintName = "Help Me!"
-            ReferencedContainer = "container:Help Me!.xcodeproj">
+            BuildableName = "HelpMe.app"
+            BlueprintName = "HelpMe"
+            ReferencedContainer = "container:HelpMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48EC6F371C44A73D00A88818"
-            BuildableName = "Help Me!.app"
-            BlueprintName = "Help Me!"
-            ReferencedContainer = "container:Help Me!.xcodeproj">
+            BuildableName = "HelpMe.app"
+            BlueprintName = "HelpMe"
+            ReferencedContainer = "container:HelpMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

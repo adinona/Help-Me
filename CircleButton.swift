@@ -2,8 +2,8 @@
 //  CircleButton.swift
 //  EmergencyApplication
 //
-//  Created by Aditya  Bhandari on 1/11/16.
-//  Copyright © 2016 Aditya  Bhandari. All rights reserved.
+//  Created by Aditya Bhandari on 1/11/16.
+//  Copyright © 2016 Aditya Bhandari. All rights reserved.
 //
 
 import UIKit
@@ -17,5 +17,14 @@ class CircleButton: UIButton {
         // Drawing code
     }
     */
+    
+    override func draw(_ rect: CGRect) {
+        let path = UIBezierPath(ovalIn: rect)
+        UIColor.red.setFill()
+        path.fill()
+        
+     
+        
+    }
 
 }
